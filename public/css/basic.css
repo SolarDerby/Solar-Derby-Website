@@ -35,7 +35,10 @@ div.flex-tile {
 div.flex-tag {
     background-image: linear-gradient(to bottom right, #0f172a,#1e293b);
     border-radius: 8px;
-    padding: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     border: 2px solid #334155;
     color: #E5E7EB;
 }
