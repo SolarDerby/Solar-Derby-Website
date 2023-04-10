@@ -1,0 +1,41 @@
+div.scroll-fade {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left;
+    padding: 0;
+    mask-image: linear-gradient(transparent, black 2.5%, black 90%, transparent 100%);
+}
+body { 
+    font-family: "Inter", sans-serif; 
+}
+.gradient-animate { 
+    background-size: 400%;
+    -webkit-animation: GradientAnimation 3s ease infinite;
+    -moz-animation: GradientAnimation 3s ease infinite;
+    animation: GradientAnimation 3s ease infinite;
+} 
+@keyframes GradientAnimation {
+    0%, 100% 
+    {
+        background-position: 0% 50%;
+    }
+    50%
+    {
+        background-position: 100% 50%;
+    }
+}
+div.flex-tile {
+    background-image: linear-gradient(#302b63,#2c3e50);
+    border-radius: 4px;
+    padding: 8px;
+    border: 1px solid #E5E7EB;
+    color: #E5E7EB;
+}
+div.flex-tag {
+    background-image: linear-gradient(to bottom right, #0f172a,#1e293b);
+    border-radius: 8px;
+    padding: 6px;
+    border: 2px solid #334155;
+    color: #E5E7EB;
+}

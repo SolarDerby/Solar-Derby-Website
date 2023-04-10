@@ -1,0 +1,44 @@
+<div class="fixed h-full w-full flex items-center justify-center bg-opacity-50 bg-gray-700">
+    <div>
+      <div id="Center" class="text-center bg-slate-600 rounded-lg mx-16">
+        <div class="relative rounded-lg border border-slate-500 shadow-lg">
+          <div class="items-center gap-4 px-6 py-8">
+            <div>
+              <h2 class="text-lg font-bold text-slate-100">%title%</h2>
+              <p class="mt-2 text-sm text-gray-400">
+                %subtitle%
+              </p>
+
+              <div class="space-y-4 max-w-prose flex-initial" >
+                <details class="group rounded-lg bg-slate-500 p-6 [&_summary::-webkit-details-marker]:hidden mt-2">
+                  <summary class="flex items-center justify-between cursor-pointer">
+                    <h2 class="font-medium text-slate-200">
+                      %more_title%
+                    </h2>
+
+                    <span class="relative ml-1.5 h-5 w-5 flex-shrink-0 text-slate-200">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 opacity-100 group-open:opacity-0"fill="none"viewBox="0 0 24 24"stroke="currentColor"stroke-width="2">
+                        <path stroke-linecap="round"stroke-linejoin="round"d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                      <svg xmlns="http://www.w3.org/2000/svg"class="absolute inset-0 opacity-0 group-open:opacity-100"fill="none"viewBox="0 0 24 24"stroke="currentColor"stroke-width="2">
+                        <path stroke-linecap="round"stroke-linejoin="round"d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                    </span>
+                  </summary>
+
+                  <p class="mt-4 w-full space-y-4 leading-relaxed text-slate-400">
+                    %more_body%
+                  </p>
+                </details>
+              </div>
+              <div class="mt-4 flex gap-2">
+                <button type="button" class="rounded border border-green-600 bg-green-50 px-4 py-2 text-sm font-medium text-green-600">%yes%</button>
+                <button type="button" class="rounded border border-gray-600 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-600">%no%</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
