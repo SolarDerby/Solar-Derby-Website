@@ -20,6 +20,7 @@ function OnclickCloseMenu() {
 (function () {
   console.log("Dark Mode is " + localStorage.getItem("dark-mode"));
   if (localStorage.getItem("dark-mode") === "Off") {
+    localStorage.setItem("dark-mode", "On");
     document.documentElement.classList.remove("dark");
   }else{
     localStorage.setItem("dark-mode", "On");
