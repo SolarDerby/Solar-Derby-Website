@@ -34,6 +34,14 @@ async function AskForConfirmation(title, subtitle, more_title, more_body, yes_te
     return answerValue
 }
 
+async function AskForConfirmationLink(title, subtitle, more_title, more_body, yes_text, no_text, link) {
+    var response = await AskForConfirmation(title, subtitle, more_title, more_body, yes_text, no_text)
+    if (response){
+        window.open(link, '_blank');
+    }
+}
+
+
 function ConfirmationYes(){
     hasAnswer = true
     answerValue = true
