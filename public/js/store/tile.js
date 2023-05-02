@@ -7,8 +7,9 @@ void function (script) {
     //const { searchParams } = new URL(script.src);
     //<div class="flex-tag">.STL</div>
     var fetchLocation = "./public/html/store/tile.html"
+    var itemID = script.getAttribute("item");
     fetch(fetchLocation).then(r => r.text()).then(tileContent => {
-        fetchLocation = "./public/store/" + script.getAttribute("item") + "/settings.config"
+        fetchLocation = "./public/store/" + itemID + "/settings.config"
         fetch(fetchLocation).then(r => r.text()).then(content => {
             var buttonsContent = ""
             var title = ""
@@ -44,11 +45,11 @@ void function (script) {
                     else if (key == "downloads"){
                         var splitContent = content.split(";")
                         var fileType = splitContent[0]
-                        var downloadLink = splitContent[1]
+                        var downloadLink = "/downloads/" + itemID + fileType
                         if (downloadLink.startsWith("/")){
                             downloadLink = "./public/store/" + script.getAttribute("item") + downloadLink
                         }
-                        var moreBody = splitContent[2]
+                        var moreBody = splitContent[1]
 
                         var clickCommand = "AskForConfirmationLink('Download', '" + title + " as " + fileType + "', 'More Info', '" + ReplaceTooltips(moreBody) + "', 'Download', 'Cancel', '" + downloadLink + "')"
                         buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-600\">Download " + fileType + "</button>\n"
