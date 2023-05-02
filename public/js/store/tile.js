@@ -1,8 +1,12 @@
+function ReplaceTooltips(original){
+    original = original.replace("%tooltip_stl%", "An .STL file is the most commonly used filetype for 3D printing and is ready to print with most printing software. Part downloads are not pre oriented.")
+    return original;
+}
+
 void function (script) {
     //const { searchParams } = new URL(script.src);
     //<div class="flex-tag">.STL</div>
     var fetchLocation = "./public/html/store/tile.html"
-    console.log("Loading")
     fetch(fetchLocation).then(r => r.text()).then(tileContent => {
         fetchLocation = "./public/store/" + script.getAttribute("item") + "/settings.config"
         fetch(fetchLocation).then(r => r.text()).then(content => {
@@ -46,7 +50,7 @@ void function (script) {
                         }
                         var moreBody = splitContent[2]
 
-                        var clickCommand = "AskForConfirmationLink('Download', '" + title + " as " + fileType + "', 'More Info', '" + moreBody + "', 'Download', 'Cancel', '" + downloadLink + "')"
+                        var clickCommand = "AskForConfirmationLink('Download', '" + title + " as " + fileType + "', 'More Info', '" + ReplaceTooltips(moreBody) + "', 'Download', 'Cancel', '" + downloadLink + "')"
                         buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-600\">Download " + fileType + "</button>\n"
                     }
                     else if (key == "links"){
@@ -60,6 +64,7 @@ void function (script) {
                         }else{
                             clickCommand = "AskForConfirmationLink('" + linkTitle + "', 'Open Link', 'More Info', 'This link redirects to a third party website.', 'Open', 'Cancel', '" + downloadLink + "')"
                         }
+
                         buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</button>\n"
                     }
                 }
