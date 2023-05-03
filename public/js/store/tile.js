@@ -37,7 +37,7 @@ void function (script) {
                     else if (key == "image"){
                         var downloadLink = content
                         if (downloadLink.startsWith("/")){
-                            downloadLink = "./public/store/" + script.getAttribute("item") + downloadLink
+                            downloadLink = "./public/store/" + itemID + downloadLink
                         }
                         tileContent = tileContent.replace("%image%", downloadLink)
                         
@@ -47,7 +47,7 @@ void function (script) {
                         var fileType = splitContent[0]
                         var downloadLink = "/downloads/" + itemID + fileType
                         if (downloadLink.startsWith("/")){
-                            downloadLink = "./public/store/" + script.getAttribute("item") + downloadLink
+                            downloadLink = "./public/store/" + itemID + downloadLink
                         }
                         var moreBody = splitContent[1]
 
@@ -60,9 +60,15 @@ void function (script) {
                         var downloadLink = splitContent[1]
                         var clickCommand = ""
                         if (downloadLink.startsWith("/")){
-                            downloadLink = "./public/store/" + script.getAttribute("item") + downloadLink
+                            downloadLink = "./public/store/" + itemID + downloadLink
                             clickCommand = "window.open(" + downloadLink + ", '_blank')"
-                        }else{
+                        }
+                        else if (downloadLink.length == 0)
+                        {
+                            clickCommand = "window.open('./item.html?item=" + itemID + "', '_blank')"
+                        }
+                        else
+                        {
                             clickCommand = "AskForConfirmationLink('" + linkTitle + "', 'Open Link', 'More Info', 'This link redirects to a third party website.', 'Open', 'Cancel', '" + downloadLink + "')"
                         }
 

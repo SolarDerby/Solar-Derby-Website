@@ -6,6 +6,15 @@ div.scroll-fade {
     padding: 0;
     mask-image: linear-gradient(transparent, black 2.5%, black 90%, transparent 100%);
 }
+div.horizontal-scroll-fade {
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: left;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    padding: 0;
+    mask-image: linear-gradient(to right, transparent, black 2.5%, black 97.5%, transparent 100%);
+}
 body { 
     font-family: "Inter", sans-serif; 
 }
