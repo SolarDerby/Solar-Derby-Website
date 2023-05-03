@@ -113,7 +113,7 @@ void function (script) {
                     }
                     else if (downloadLink.length == 0)
                     {
-                        clickCommand = "window.open('./item.html?item=" + itemID + "', '_blank')"
+                        clickCommand = "window.location.href = './item.html?item=" + itemID + "'"
                     }
                     else
                     {
