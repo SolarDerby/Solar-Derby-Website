@@ -21,7 +21,7 @@ void function (script) {
                 var contentRaw = line.split("=")[1]
                 var contentParts = contentRaw.split(",")
                 for(var v = 0;v < contentParts.length;v++){
-                    var content = contentParts[v].split("\"")[1].split("\"")[0]
+                    var content = contentParts[v].split("\"")[1].split("\"")[0].replace("<-.>", ",");
                     if (key == "title"){
                         title = content;
                         tileContent = tileContent.replace("%title%", content)
@@ -69,7 +69,7 @@ void function (script) {
                         }
                         else
                         {
-                            clickCommand = "AskForConfirmationLink('" + linkTitle + "', 'Open Link', 'More Info', 'This link redirects to a third party website.', 'Open', 'Cancel', '" + downloadLink + "')"
+                            clickCommand = "AskForConfirmationLink('" + linkTitle + "', 'Open link to a third party website.', 'More Info', 'These links are being provided as a convenience and for informational purposes only; they do not constitute an endorsement or an approval by Solar Derby of any of the products, services or opinions of the corporation or organization or individual. Solar Derby bears no responsibility for the accuracy, legality or content of the external site or for that of subsequent links. Contact the external site for answers to questions regarding its content.', 'Open', 'Cancel', '" + downloadLink + "')"
                         }
 
                         buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</button>\n"

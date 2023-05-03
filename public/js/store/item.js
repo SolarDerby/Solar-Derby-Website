@@ -20,11 +20,15 @@ void function (script) {
     var fetchLocation = "./public/store/" + itemID + "/settings.config"
     fetch(fetchLocation).then(r => r.text()).then(content => {
         document.getElementById("estimated_cost").innerHTML = "";
+        document.getElementById("title").innerHTML = "";
+        document.getElementById("subtitle").innerHTML = "";
+        document.getElementById("description").innerHTML = "";
         document.getElementById("dependencies").innerHTML = "";
         document.getElementById("associated").innerHTML = "";
         var buttonsContent = ""
         var tagsContent = ""
         var figuresContent = ""
+        var partsContent = ""
         var extraImagesContent = ""
         var dependenciesContent = 0
         var associatedContent = 0
@@ -39,7 +43,7 @@ void function (script) {
             var contentRaw = line.split("=")[1]
             var contentParts = contentRaw.split(",")
             for(var v = 0;v < contentParts.length;v++){
-                var content = contentParts[v].split("\"")[1].split("\"")[0]
+                var content = contentParts[v].split("\"")[1].split("\"")[0].replace("<-.>", ",");
                 if (key == "title"){
                     document.getElementById("page_title").innerHTML = "Solar Derby - " + content;
                     document.getElementById("title").innerHTML = content;
@@ -74,6 +78,9 @@ void function (script) {
                 }
                 else if (key == "figures"){
                     figuresContent += "<p class=\"mt-2 block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200\">" + content + "</p>"
+                }
+                else if (key == "parts"){
+                    partsContent += "<p class=\"mt-2 block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200\">" + content + "</p>"
                 }
                 else if (key == "associated"){
                     associatedContent++
@@ -110,7 +117,7 @@ void function (script) {
                     }
                     else
                     {
-                        clickCommand = "AskForConfirmationLink('" + linkTitle + "', 'Open Link', 'More Info', 'This link redirects to a third party website.', 'Open', 'Cancel', '" + downloadLink + "')"
+                        clickCommand = "AskForConfirmationLink('" + linkTitle + "', 'Open link to a third party website.', 'More Info', 'These links are being provided as a convenience and for informational purposes only; they do not constitute an endorsement or an approval by Solar Derby of any of the products, services or opinions of the corporation or organization or individual. Solar Derby bears no responsibility for the accuracy, legality or content of the external site or for that of subsequent links. Contact the external site for answers to questions regarding its content.', 'Open', 'Cancel', '" + downloadLink + "')"
                     }
 
                     if (downloadLink.length != 0){
@@ -129,6 +136,11 @@ void function (script) {
             document.getElementById("figures").innerHTML = figuresContent;
         }else{
             document.getElementById("figures_body").innerHTML = ""
+        }
+        if (partsContent.length > 0){
+            document.getElementById("parts").innerHTML = partsContent;
+        }else{
+            document.getElementById("parts_body").innerHTML = ""
         }
         if (dependenciesContent == 0){
             document.getElementById("dependencies_body").remove()
