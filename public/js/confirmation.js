@@ -1,11 +1,14 @@
 var rawConfirmation = ""
+var windowDiv
 void function (script) {
     //const { searchParams } = new URL(script.src);
     var fetchLocation = "./public/html/confirmation.html"
+    windowDiv = document.createElement("div")
+    windowDiv.setAttribute("id", "confirmation_window")
+    script.parentElement.appendChild(windowDiv)
     fetch(fetchLocation).then(r => r.text()).then(content => {
         rawConfirmation = content;
-        var masterContent = "<div id=\"confirmation-window\"></div>"
-        script.outerHTML = masterContent;
+        
     });
 
 }(document.currentScript);
@@ -14,6 +17,9 @@ void function (script) {
 var hasAnswer = false
 var answerValue = false
 async function AskForConfirmation(title, subtitle, more_title, more_body, yes_text, no_text) {
+    while(rawConfirmation.length < 1){
+        await new Promise(r => setTimeout(r, 100));
+    }
     var modifiedConfirmation = rawConfirmation
     modifiedConfirmation = modifiedConfirmation.replace("%title%", title)
     modifiedConfirmation = modifiedConfirmation.replace("%subtitle%", subtitle)
@@ -21,7 +27,11 @@ async function AskForConfirmation(title, subtitle, more_title, more_body, yes_te
     modifiedConfirmation = modifiedConfirmation.replace("%more_body%", more_body)
     modifiedConfirmation = modifiedConfirmation.replace("%yes%", yes_text)
     modifiedConfirmation = modifiedConfirmation.replace("%no%", no_text)
-    document.getElementById("confirmation-window").innerHTML = modifiedConfirmation
+    if (no_text.length < 1){
+        modifiedConfirmation = modifiedConfirmation.replace("%no_visibility%", "style=\"display:none\"")
+    }
+
+    windowDiv.innerHTML = modifiedConfirmation
 
     hasAnswer = false
 
@@ -29,9 +39,13 @@ async function AskForConfirmation(title, subtitle, more_title, more_body, yes_te
         await new Promise(r => setTimeout(r, 100));
     }
 
-    document.getElementById("confirmation-window").innerHTML = ""
+    windowDiv.innerHTML = ""
 
     return answerValue
+}
+
+async function AskForNotify(title, subtitle, more_title, more_body) {
+    var response = await AskForConfirmation(title, subtitle, more_title, more_body, "Ok", "")
 }
 
 async function AskForConfirmationLink(title, subtitle, more_title, more_body, yes_text, no_text, link) {
