@@ -60,11 +60,26 @@ function LoadDocsDropdown(){
             while(document.getElementById("docs_subcategory_button") == null){
                 await new Promise(r => setTimeout(r, 100));
             }
-            document.getElementById("docs_subcategory_button").parentElement.innerHTML = content
+            var dropdownParent = document.getElementById("docs_subcategory_button").parentElement;
+            dropdownParent.innerHTML = ""
+            var contentNodes = Array.prototype.slice.call(parseHTML(content).children, 0)
+            
+            for(var i = 0; i < contentNodes.length; i++){
+                var node = contentNodes[i]
+                RevalidateScripts(node)  
+                dropdownParent.appendChild(node)
+            }
+            
         });
     }catch (error){
         AskForNotify("400", "Bad Request.", "More Info", "On Load Dropdown Function - " + error)
     }
+}
+
+function uuidv4() {
+return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+);
 }
 
 function LoadDocs(fetchLocation){
@@ -112,6 +127,8 @@ function LoadDocs(fetchLocation){
                     }
                     else
                     {
+                        var sectionTitle = i.toString();
+                        var sectionHref = window.location.origin + window.location.pathname + window.location.search + "#" + sectionTitle
                         if (lines[i][0] != "-"){
                             if (submenu){
                                 submenu = false
@@ -122,21 +139,21 @@ function LoadDocs(fetchLocation){
                                 webContent += "</section>"
                             }
                             lastmenu = true;
-                            webContent += "<section id=\"" + currentSection + src + "\"><div class=\"h-full mt-5\">"
+                            webContent += "<section id=\"" + sectionTitle + "\"><div class=\"h-full mt-5\">"
                             webContent += "<p class=\"font-normal text-2xl\">" + title + "</p>"
                             webContent += await webpageContent(src)
                             webContent += "</div>"
-                            newContent = newContent + "<li class=\"font-medium\"><a href=\"#" + currentSection + src + "\">" + title + "</a></li>"
+                            newContent = newContent + "<li class=\"font-medium\"><a href=\"" + sectionHref  + "\">" + title + "</a></li>"
                         }else{
                             if (!submenu){
                                 submenu = true
                                 newContent += "<ul class=\"nav\">"
                             }
-                            webContent += "<section id=\"" + currentSection + src + "\" class=\"border-l-[2px]\"><div class=\"h-full mt-3 ml-5\">"
+                            webContent += "<section id=\"" + sectionTitle + "\" class=\"border-l-[2px]\"><div class=\"h-full mt-3 ml-5\">"
                             webContent += "<p class=\"font-normal text-xl\">" + title + "</p>"
                             webContent += await webpageContent(src)
                             webContent += "</div></section>"
-                            newContent += "<li class=\"text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]\"> <a href=\"#" + currentSection + src + "\">" + title + "</a></li>"
+                            newContent += "<li class=\"text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]\"> <a href=\"" + sectionHref + "\">" + title + "</a></li>"
                         }
                         //code here using lines[i] which will give you each line
                     }
@@ -148,15 +165,9 @@ function LoadDocs(fetchLocation){
                 const parser = new DOMParser();
                 
                 
-                //webContent += "<button onclick=\"PrintDocs()\" class=\"rounded border border-green-600 bg-green-50 hover:bg-green-200 px-4 py-2 text-sm font-medium text-green-600\">Print</button>"
-                var newContentNodes = Array.prototype.slice.call(parser.parseFromString(newContent, 'text/html').getElementsByTagName("body")[0].childNodes, 0)
-                var webContentNodes = Array.prototype.slice.call(parseHTML(webContent).childNodes, 0)
+                var webContentNodes = Array.prototype.slice.call(parseHTML(webContent).children, 0)
 
-                for(var i = 0; i < newContentNodes.length; i++){
-                    var node = newContentNodes[i]
-                    RevalidateScripts(node)  
-                    docTable.appendChild(node)
-                }
+                docTable.innerHTML = newContent
                 
                 for(var i = 0; i < webContentNodes.length; i++){
                     var node = webContentNodes[i]
