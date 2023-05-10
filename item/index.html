@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!--Start Root Directory Repair-->
+    <script>
+      void function (script) {
+        if (location.hostname.toLowerCase() == "solarderby.github.io"){
+          script.outerHTML = "<base href=\"/Solar-Derby-Website/\">"
+        }else{
+          script.outerHTML = "<base href=\"/\">"
+        }
+      }(document.currentScript);
+    </script>
+    <!--End Root Directory Repair-->
+    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,11 +27,11 @@
 
     <!-- You can add your own fonts from fonts.google.com -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"/>
-    <link rel="stylesheet" href="/public/css/basic.css">
+    <link rel="stylesheet" href="./public/css/basic.css">
 
     <!-- Default Script tags -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/public/js/index.js"></script>
+    <script src="./public/js/index.js"></script>
 
     <script>
       tailwind.config = {
@@ -31,12 +43,12 @@
     <title>Resource - Solar Derby</title>
   </head>
 <body style="font-family: 'Poppins', sans-serif" class="dark:bg-slate-900 bg-white ">
-    <script src="/public/js/store/item.js"></script>
+    <script src="./public/js/store/item.js"></script>
 
     <!-- Shop Window ends here -->
-    <script src="/public/js/confirmation.js"></script>
+    <script src="./public/js/confirmation.js"></script>
     <!-- Header start here -->
-    <script src="/public/js/headerLoad.js" fetch="/public/html/header.html" rep="<!--%rep%-->" title="Solar Derby" buttons=
+    <script src="./public/js/headerLoad.js" fetch="./public/html/header.html" rep="<!--%rep%-->" title="Solar Derby" buttons=
       "Home:/;
       Documentation:/docs/;
       Resources:/store/"
@@ -44,13 +56,13 @@
     </script>
 
     <div id="loading_placeholder" class="max-w-4xl my-16 mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 place-content-center">
-      <script src="/public/js/loadingPlaceholder.js" size="width:50%;height:100%-193px-128px" design="parts:5;subparts:2;deviation:50;title-height:40px"></script>
+      <script src="./public/js/loadingPlaceholder.js" size="width:50%;height:100%-193px-128px" design="parts:5;subparts:2;deviation:50;title-height:40px"></script>
     </div>
     <main id="main_content" class="py-6 px-4 sm:p-6 md:py-10 md:px-8" style="display:none">
       <div class="max-w-4xl mx-auto grid grid-cols-1 lg:max-w-5xl lg:gap-x-20 lg:grid-cols-2">
         
         <div class="lg:relative grid gap-4 col-start-1 col-end-3 row-start-1 sm:mb-6 sm:grid-cols-4 lg:gap-6 lg:col-start-2 lg:row-end-7 lg:row-span-8 lg:mb-0">
-          <img id="image" src="/public/images/logo_1.png" alt="" class="w-full  lg:absolute h-60 object-cover rounded-lg lg:h-full sm:col-span-5 lg:row-span-full lg:col-span-full" loading="lazy">
+          <img id="image" src="./public/images/logo_1.png" alt="" class="w-full  lg:absolute h-60 object-cover rounded-lg lg:h-full sm:col-span-5 lg:row-span-full lg:col-span-full" loading="lazy">
         </div>
         <div class="relative p-3 col-start-1 row-start-1 flex flex-col-reverse rounded-lg bg-gradient-to-t from-black/75 via-black/0 sm:bg-none sm:row-start-2 sm:p-0 lg:row-start-1">
           <h1 id="title" class="mt-1 text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white">Item</h1>
@@ -112,11 +124,11 @@
             <ul class="mt-4 space-y-1">
               <li class="block rounded-lg bg-gray-100 py-2 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200">
                 <div id="extra_images" class="overflow-x-auto h-96 flex flex-nowrap horizontal-scroll-fade">
-                  <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-                  <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-                  <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-                  <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-                  <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+                  <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+                  <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+                  <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+                  <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+                  <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
                 </div>
               </li>
             </ul>
@@ -167,13 +179,13 @@
           <div class="flex flex-col md:flex-row lg:flex-row mr-16 md:mr-0">
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 m-8 w-full">
               <div class="flex-tile">
-                <script src="/public/js/store/tile.js" item="110101"></script>
+                <script src="./public/js/store/tile.js" item="110101"></script>
               </div>
               <div class="flex-tile">
-                <script src="/public/js/store/tile.js" item="110201"></script>
+                <script src="./public/js/store/tile.js" item="110201"></script>
               </div>
               <div class="flex-tile">
-                <script src="/public/js/store/tile.js" item="110301"></script>
+                <script src="./public/js/store/tile.js" item="110301"></script>
               </div>
             </div>
           </div>
@@ -189,16 +201,16 @@
           <div class="flex flex-col md:flex-row lg:flex-row mr-16 md:mr-0">
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-4 m-8 w-full">
               <div class="flex-tile">
-                <script src="/public/js/store/tile.js" item="210101"></script>
+                <script src="./public/js/store/tile.js" item="210101"></script>
               </div>
               <div class="flex-tile">
-                <script src="/public/js/store/tile.js" item="210201"></script>
+                <script src="./public/js/store/tile.js" item="210201"></script>
               </div>
               <div class="flex-tile">
-                <script src="/public/js/store/tile.js" item="210301"></script>
+                <script src="./public/js/store/tile.js" item="210301"></script>
               </div>
               <div class="flex-tile">
-                <script src="/public/js/store/tile.js" item="210401"></script>
+                <script src="./public/js/store/tile.js" item="210401"></script>
               </div>
             </div>
           </div>
@@ -208,7 +220,7 @@
     -->
     
     <!-- Footer starts here -->
-    <script src="/public/js/include.js" fetch="/public/html/footer.html"></script>
+    <script src="./public/js/include.js" fetch="./public/html/footer.html"></script>
     <!-- Footer ends here -->
   </body>
 </html>

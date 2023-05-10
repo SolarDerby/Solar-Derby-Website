@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!--Start Root Directory Repair-->
+    <script>
+      void function (script) {
+        if (location.hostname.toLowerCase() == "solarderby.github.io"){
+          script.outerHTML = "<base href=\"/Solar-Derby-Website/\">"
+        }else{
+          script.outerHTML = "<base href=\"/\">"
+        }
+      }(document.currentScript);
+    </script>
+    <!--End Root Directory Repair-->
+    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
 
     <!-- Change the description wrt project -->
     <meta
@@ -20,11 +34,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/public/css/basic.css">
+    <link rel="stylesheet" href="./public/css/basic.css">
 
     <!-- Default Script tags -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/public/js/index.js"></script>
+    <script src="./public/js/index.js"></script>
 
     <script>
       tailwind.config = {
@@ -42,7 +56,7 @@
     class="dark:bg-slate-900 bg-white dark:text-white"
   >
     <!-- Header start here -->
-    <script src="/public/js/headerLoad.js" fetch="/public/html/header.html" rep="<!--%rep%-->" buttons=
+    <script src="./public/js/headerLoad.js" fetch="./public/html/header.html" rep="<!--%rep%-->" buttons=
       "Home:/;
       Documentation:/docs/;
       Resources:/store;
@@ -116,11 +130,11 @@
         <ul class=" space-y-1">
           <li class="block rounded-lg sm:rounded-none sm:bg-gradient-to-r from-blue-950 to-gray-700 border-solid sm:border-y border-gray-200 bg-gray-100 py-2 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200">
             <div id="extra_images" class="overflow-x-auto h-3/4 flex flex-nowrap horizontal-scroll-fade">
-              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
             </div>
           </li>
         </ul>
@@ -161,7 +175,7 @@
                 <div class=" h-fit row-span-3 md:col-span-3">
                   <strong  class="block uppercase text-md leading-4 font-medium text-slate-300 mb-2">START YOUR FIRST CAR</strong>
                   <div class="flex-tile">
-                    <script src="/public/js/store/tile.js" item="A310001"></script>
+                    <script src="./public/js/store/tile.js" item="A310001"></script>
                   </div>
                 </div>
               </div>
@@ -183,7 +197,7 @@
               <div role="listitem" class="relative flex justify-center items-center">
                 <a href="https://github.com/RexGameStudio" target="_blank">
                   <div class="relative h-40 bg-white hover:drop-shadow-2xl w-48 flex justify-center rounded-md">
-                    <img src="/public/svgs/github.svg" class="absolute top-16 h-6 w-6" alt="github.img"/>
+                    <img src="./public/svgs/github.svg" class="absolute top-16 h-6 w-6" alt="github.img"/>
                     <img src="https://avatars.githubusercontent.com/u/101283720?v=4" class="absolute w-20 h-20 -top-8 rounded-full" alt="display avatar" role="img"/>
                     <p class="absolute top-24 text-center text-black">Rex Kaeser</p>
                   </div>
@@ -202,7 +216,7 @@
     <!-- Contribution section ends here -->
 
     <!-- Footer starts here -->
-    <script src="/public/js/include.js" fetch="/public/html/footer.html"></script>
+    <script src="./public/js/include.js" fetch="./public/html/footer.html"></script>
     <!-- Footer ends here -->
   </body>
 </html>

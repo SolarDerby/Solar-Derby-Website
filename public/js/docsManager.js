@@ -53,7 +53,7 @@ function RevalidateScripts(node)
 }
 
 function LoadDocsDropdown(){
-    var fetchLocation = "/public/html/docs-dropdown.html"
+    var fetchLocation = "./public/html/docs-dropdown.html"
 
     try {
         fetch(fetchLocation).then(r => r.text()).then(async content => {

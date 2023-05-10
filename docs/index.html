@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!--Start Root Directory Repair-->
+    <script>
+      void function (script) {
+        if (location.hostname.toLowerCase() == "solarderby.github.io"){
+          script.outerHTML = "<base href=\"/Solar-Derby-Website/\">"
+        }else{
+          script.outerHTML = "<base href=\"/\">"
+        }
+      }(document.currentScript);
+    </script>
+    <!--End Root Directory Repair-->
+    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,11 +27,11 @@
 
     <!-- You can add your own fonts from fonts.google.com -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"/>
-    <link rel="stylesheet" href="/public/css/basic.css">
+    <link rel="stylesheet" href="./public/css/basic.css">
 
     <!-- Default Script tags -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="/public/js/index.js"></script>
+    <script src="./public/js/index.js"></script>
 
     <script>
       tailwind.config = {
@@ -35,7 +47,7 @@
     class="dark:bg-slate-900 bg-white dark:text-white"
   >
     <!-- Header start here -->
-    <script src="/public/js/headerLoad.js" fetch="/public/html/header.html" rep="<!--%rep%-->" title="Solar Derby" buttons=
+    <script src="./public/js/headerLoad.js" fetch="./public/html/header.html" rep="<!--%rep%-->" title="Solar Derby" buttons=
       ":docs_subcategory;
       Home:/;
       Documentation:/docs/;
@@ -43,7 +55,7 @@
       >
     </script>
 
-<script src="/public/js/confirmation.js"></script>
+<script src="./public/js/confirmation.js"></script>
 
     <div class="flex flex-col md:flex-row lg:flex-row">
       <!-- Side menu starts here -->
@@ -52,7 +64,7 @@
         <ul class="nav " style="height:calc(100% - 103px)">
           <div  class="scroll-fade"style="overflow-x:auto;width:200px">
             <div id="docs-placeholder-table-of-contents" class="m-5">
-              <script src="/public/js/loadingPlaceholder.js" size="width:162px;height:35%" design="parts:5;subparts:2;deviation:50;title-height:40px"></script>
+              <script src="./public/js/loadingPlaceholder.js" size="width:162px;height:35%" design="parts:5;subparts:2;deviation:50;title-height:40px"></script>
             </div>
             <div id="docs-table-of-contents" class="mx-5">
 
@@ -65,17 +77,17 @@
       <div class="pl-5 md:pl-[250px] lg:pl-[25opx]">
         <br>
         <div id="docs-placeholder-content" class="mr-[44px]">
-          <script src="/public/js/loadingPlaceholder.js" size="width:100%-300px;height:100%-193px-44px" design="parts:6;subparts:1;deviation:10%%;title-height:30px"></script>
+          <script src="./public/js/loadingPlaceholder.js" size="width:100%-300px;height:100%-193px-44px" design="parts:6;subparts:1;deviation:10%%;title-height:30px"></script>
         </div>
         <div id="docs-content" class="mr-[44px]">
 
         </div>
       </div>
-      <script src="/public/js/docsManager.js" async fetch="/public/guide-docs/library.config"></script>
+      <script src="./public/js/docsManager.js" async fetch="./public/guide-docs/library.config"></script>
     </div>
 
     <!-- Footer starts here -->
-    <script src="/public/js/include.js" fetch="/public/html/footer.html"></script>
+    <script src="./public/js/include.js" fetch="./public/html/footer.html"></script>
     <!-- Footer ends here -->
   </body>
 </html>

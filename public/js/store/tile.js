@@ -6,10 +6,10 @@ function ReplaceTooltips(original){
 void function (script) {
     //const { searchParams } = new URL(script.src);
     //<div class="flex-tag">.STL</div>
-    var fetchLocation = "/public/html/store/tile.html"
+    var fetchLocation = "./public/html/store/tile.html"
     var itemID = script.getAttribute("item");
     fetch(fetchLocation).then(r => r.text()).then(tileContent => {
-        fetchLocation = "/public/store/" + itemID + "/settings.config"
+        fetchLocation = "./public/store/" + itemID + "/settings.config"
         fetch(fetchLocation).then(r => r.text()).then(content => {
             var buttonsContent = ""
             var title = ""
@@ -37,7 +37,7 @@ void function (script) {
                     else if (key == "image"){
                         var downloadLink = content
                         if (downloadLink.startsWith("/")){
-                            downloadLink = "/public/store/" + itemID + downloadLink
+                            downloadLink = "./public/store/" + itemID + downloadLink
                         }
                         tileContent = tileContent.replace("%image%", downloadLink)
                         
@@ -47,7 +47,7 @@ void function (script) {
                         var fileType = splitContent[0]
                         var downloadLink = "/downloads/" + itemID + fileType
                         if (downloadLink.startsWith("/")){
-                            downloadLink = "/public/store/" + itemID + downloadLink
+                            downloadLink = "./public/store/" + itemID + downloadLink
                         }
                         var moreBody = splitContent[1]
 
@@ -60,7 +60,7 @@ void function (script) {
                         var downloadLink = splitContent[1]
                         var clickCommand = ""
                         if (downloadLink.startsWith("/")){
-                            downloadLink = "/public/store/" + itemID + downloadLink
+                            downloadLink = "./public/store/" + itemID + downloadLink
                             clickCommand = "window.open(" + downloadLink + ", '_blank')"
                             buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</button>\n"
                         }
