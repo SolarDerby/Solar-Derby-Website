@@ -41,9 +41,15 @@ div.flex-tile {
     border: 1px solid #E5E7EB;
     color: #E5E7EB;
 }
-div.debug {
+div.flex-tile-clean {
+    background-image: linear-gradient(#302b63,#2c3e50);
     border-radius: 4px;
-    padding: 8px;
+    border: 1px solid #E5E7EB;
+    color: #E5E7EB;
+}
+div.debug {
+    border-radius: 2px;
+    padding: 0px;
     border: 1px solid #ff00ff;
 }
 div.flex-tag {

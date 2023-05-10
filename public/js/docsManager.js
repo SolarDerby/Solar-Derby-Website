@@ -1,4 +1,5 @@
 var docsLocation = ""
+
 async function webpageContent(src){
     const response = await fetch(docsLocation + src).then(r => r.text()).then(content => {return content;});
     return response
@@ -10,6 +11,16 @@ function parseHTML(html) {
     return t.content;
 }
 
+function PrintDocs() {
+    var divContents = document.getElementById("page-content").innerHTML;
+    var a = window.open('', '', 'height=500, width=500');
+    a.document.write('<html>');
+    a.document.write('<body > <h1>Div contents are <br>');
+    a.document.write(divContents);
+    a.document.write('</body></html>');
+    a.document.close();
+    a.print();
+}
 
 function RevalidateScripts(node) 
 {
@@ -42,7 +53,7 @@ void function (script) {
     fetch(fetchLocation).then(r => r.text()).then(async content => {
         var lines = content.split('\n');
         var newContent = "";
-        var webContent = "<div class=\" rounded bg-gradient-to-br from-blue-950 to-gray-700 p-10 border-solid border border-gray-200\"> <div class=\"w-full items-center flex justify-center flex-col\"> <p class=\"text-4xl text-white\">" + name + "</p></div></div>"
+        var webContent = "<div class=\" flex-tile-clean p-10\"> <div class=\"w-full items-center flex justify-center flex-col\"> <p class=\"text-4xl text-white\">" + name + "</p></div></div>"
         
         var currentSection = "";
         var submenu = false;
@@ -109,6 +120,8 @@ void function (script) {
 
         docTable.innerHTML = ""
         docContents.innerHTML = ""
+        
+        //webContent += "<button onclick=\"PrintDocs()\" class=\"rounded border border-green-600 bg-green-50 hover:bg-green-200 px-4 py-2 text-sm font-medium text-green-600\">Print</button>"
         var newContentNodes = Array.prototype.slice.call(parser.parseFromString(newContent, 'text/html').getElementsByTagName("body")[0].childNodes, 0)
         var webContentNodes = Array.prototype.slice.call(parseHTML(webContent).childNodes, 0)
 
