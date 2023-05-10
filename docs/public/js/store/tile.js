@@ -1,5 +1,6 @@
 function ReplaceTooltips(original){
     original = original.replace("%tooltip_stl%", "An .STL file is the most commonly used filetype for 3D printing and is ready to print with most printing software. Part downloads are not pre oriented.")
+    original = original.replace("%tooltip_license%", "The file you are downloading is provided under the Creative Commons; CC BY: This license allows reusers to distribute, remix, adapt, and build upon the material in any medium or format, so long as attribution is given to the creator. The license allows for commercial use.")
     return original;
 }
 
