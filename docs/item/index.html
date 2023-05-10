@@ -2,12 +2,14 @@
 <html lang="en">
   <head>
     <!--Start Root Directory Repair-->
-    <script>
+    <base id="base" href="/Solar-Derby-Website/">
+    <script type="text/javascript">
       void function (script) {
         if (location.hostname.toLowerCase() == "solarderby.github.io"){
-          script.outerHTML = "<base href=\"/Solar-Derby-Website/\">"
+          //document.write("<base href=\"/Solar-Derby-Website/\">")
         }else{
-          script.outerHTML = "<base href=\"/docs/\">"
+          document.getElementById("base").remove();
+          document.write("<base href=\"/docs/\">")
         }
       }(document.currentScript);
     </script>
@@ -43,15 +45,15 @@
     <title>Resource - Solar Derby</title>
   </head>
 <body style="font-family: 'Poppins', sans-serif" class="dark:bg-slate-900 bg-white ">
-    <script src="./public/js/store/item.js"></script>
+    
 
     <!-- Shop Window ends here -->
     <script src="./public/js/confirmation.js"></script>
     <!-- Header start here -->
     <script src="./public/js/headerLoad.js" fetch="./public/html/header.html" rep="<!--%rep%-->" title="Solar Derby" buttons=
-      "Home:/;
-      Documentation:/docs/;
-      Resources:/store/"
+      "Home:./;
+      Documentation:./docs/;
+      Resources:./store/"
       >
     </script>
 
@@ -218,7 +220,7 @@
       </div>
     </div>
     -->
-    
+    <script src="./public/js/store/item.js"></script>
     <!-- Footer starts here -->
     <script src="./public/js/include.js" fetch="./public/html/footer.html"></script>
     <!-- Footer ends here -->

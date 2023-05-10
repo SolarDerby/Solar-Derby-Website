@@ -75,9 +75,6 @@ void function (script) {
                             if (downloadLink.startsWith("/")){
                                 downloadLink = "./public/store/" + itemID + downloadLink
                             }
-                            if (downloadLink.startsWith("#/")){
-                                downloadLink = downloadLink.replace("#/", "/")
-                            }
                             var imageElement = "<img src=\"" + downloadLink + "\" class=\"h-full mr-2 w-fit object-cover rounded-lg\" loading=\"lazy\"></img>"
                             extraImagesContent += imageElement + "\n"
                         }
@@ -119,7 +116,7 @@ void function (script) {
                             }
                             else if (downloadLink.length == 0)
                             {
-                                clickCommand = "/item/?item=" + itemID
+                                clickCommand = "./item/?item=" + itemID
                                 buttonsContent += "<a type=\"button\" href =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
                             }
                             else

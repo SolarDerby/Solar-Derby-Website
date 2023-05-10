@@ -2,12 +2,14 @@
 <html lang="en">
   <head>
     <!--Start Root Directory Repair-->
-    <script>
+    <base id="base" href="/Solar-Derby-Website/">
+    <script type="text/javascript">
       void function (script) {
         if (location.hostname.toLowerCase() == "solarderby.github.io"){
-          script.outerHTML = "<base href=\"/Solar-Derby-Website/\">"
+          //document.write("<base href=\"/Solar-Derby-Website/\">")
         }else{
-          script.outerHTML = "<base href=\"/docs/\">"
+          document.getElementById("base").remove();
+          document.write("<base href=\"/docs/\">")
         }
       }(document.currentScript);
     </script>
@@ -58,8 +60,8 @@
     <!-- Header start here -->
     <script src="./public/js/headerLoad.js" fetch="./public/html/header.html" rep="<!--%rep%-->" buttons=
       "Home:/;
-      Documentation:/docs/;
-      Resources:/store;
+      Documentation:./docs/;
+      Resources:./store;
       Starting:#start;
       Contribution:#contributors"
       >
