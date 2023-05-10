@@ -1,0 +1,53 @@
+<div class="relative">
+    <div onclick="toggleDocsDropdown()" id="docs-dropdown-border" class="inline-flex items-center overflow-hidden rounded-md border-2 bg-gray-800 mr-4">
+      <a href="#" class="flex flex-row border-gray-500 border-r pr-2 py-0.5 text-sm/none text-gray-300 bg-gray-800">
+        <p id="docs-dropdown-heading" class="w-max uppercase bg-gray-600 rounded block px-1 mx-2 text-xs font-medium uppercase text-slate-90">404</p>
+        <p id="docs-dropdown-subheading" class=" p-0.5">Error</p>
+      </a>
+      <button class="h-full p-1 text-gray-200 hover:bg-gray-700 hover:text-gray-300">
+        <span class="sr-only">Menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" >
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+
+  
+    <div id="docs-dropdown-menu" style="display:none" class="absolute end-0 z-10 mt-2 w-56 divide-y divide-gray-700 rounded-md border border-gray-700 bg-gray-800 shadow-lg" role="menu">
+      <div class="p-2">
+        <strong class="block p-2 text-xs font-medium uppercase text-gray-400">
+          Relavent
+        </strong>
+  
+        <a href="?doc=24-25-guide" class="flex flex-row pr-3 py-2  hover:bg-gray-700 rounded-lg  text-sm/none text-gray-300 bg-gray-800">
+            <p class="w-max uppercase bg-gray-600 rounded block px-1 mx-2 text-xs font-medium uppercase text-slate-90">24-25</p>
+            <p class=" text-gray-400 p-0.5">Guide</p>
+        </a>
+        <a href="?doc=24-25-rules" class="flex flex-row pr-3 py-2  hover:bg-gray-700 rounded-lg  text-sm/none text-gray-300 bg-gray-800">
+            <p class="w-max uppercase bg-gray-600 rounded block px-1 mx-2 text-xs font-medium uppercase text-slate-90">24-25</p>
+            <p class=" text-gray-400 p-0.5">Rules</p>
+        </a>
+        
+      </div>
+  
+      <div class="p-2">
+        <strong class="block p-2 text-xs font-medium uppercase text-gray-400">
+            Subsequent Years
+        </strong>
+
+        <a href="#" class="block rounded-lg px-4 py-2 text-sm text-gray-400 hover:bg-gray-700 hover:text-gray-300" role="menuitem">
+            There is no future years to see here!
+        </a>
+      </div>
+      <div class="p-2">
+        <strong class="block p-2 text-xs font-medium uppercase text-gray-400">
+            Preceding Years
+        </strong>
+
+        <a href="#" class="block rounded-lg px-4 py-2 text-sm text-gray-400 hover:bg-gray-700 hover:text-gray-300" role="menuitem">
+            There is no previous years to see here!
+        </a>
+      </div>
+    </div>
+  </div>
+  

@@ -7,7 +7,7 @@ function AppendTile(elementID, itemID){
     var newDiv = document.createElement("div")
     newDiv.setAttribute("class", "flex-tile")
     var newScript = document.createElement("script")
-    newScript.setAttribute("src", "./public/js/store/tile.js")
+    newScript.setAttribute("src", "/public/js/store/tile.js")
     newScript.setAttribute("item", itemID)
     newDiv.appendChild(newScript)
     document.getElementById(elementID).appendChild(newDiv)
@@ -18,7 +18,7 @@ void function (script) {
     try{
         var urlParams = new URLSearchParams(window.location.search);
         var itemID = urlParams.get('item')
-        var fetchLocation = "./public/store/" + itemID + "/settings.config"
+        var fetchLocation = "/public/store/" + itemID + "/settings.config"
         fetch(fetchLocation).then(r => r.text()).then(content => {
             try{
                 document.getElementById("estimated_cost").innerHTML = "";
@@ -47,7 +47,7 @@ void function (script) {
                     for(var v = 0;v < contentParts.length;v++){
                         var content = contentParts[v].split("\"")[1].split("\"")[0].replace("<-.>", ",");
                         if (key == "title"){
-                            document.getElementById("page_title").innerHTML = "Solar Derby - " + content;
+                            document.title = content + " - Solar Derby";
                             document.getElementById("title").innerHTML = content;
                         }
                         else if (key == "type"){
@@ -66,14 +66,17 @@ void function (script) {
                         else if (key == "image"){
                             var downloadLink = content
                             if (downloadLink.startsWith("/")){
-                                downloadLink = "./public/store/" + itemID + downloadLink
+                                downloadLink = "/public/store/" + itemID + downloadLink
                             }
                             document.getElementById("image").setAttribute("src", downloadLink)
                         }
                         else if (key == "extra images"){
                             var downloadLink = content
                             if (downloadLink.startsWith("/")){
-                                downloadLink = "./public/store/" + itemID + downloadLink
+                                downloadLink = "/public/store/" + itemID + downloadLink
+                            }
+                            if (downloadLink.startsWith("#/")){
+                                downloadLink = downloadLink.replace("#/", "/")
                             }
                             var imageElement = "<img src=\"" + downloadLink + "\" class=\"h-full mr-2 w-fit object-cover rounded-lg\" loading=\"lazy\"></img>"
                             extraImagesContent += imageElement + "\n"
@@ -97,7 +100,7 @@ void function (script) {
                             var fileType = splitContent[0]
                             var downloadLink = "/downloads/" + itemID + fileType
                             if (downloadLink.startsWith("/")){
-                                downloadLink = "./public/store/" + itemID + downloadLink
+                                downloadLink = "/public/store/" + itemID + downloadLink
                             }
                             var moreBody = splitContent[1]
 
@@ -110,13 +113,13 @@ void function (script) {
                             var downloadLink = splitContent[1]
                             var clickCommand = ""
                             if (downloadLink.startsWith("/")){
-                                downloadLink = "./public/store/" + itemID + downloadLink
+                                downloadLink = "/public/store/" + itemID + downloadLink
                                 clickCommand = "window.open(" + downloadLink + ", '_blank')"
                                 buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</button>\n"
                             }
                             else if (downloadLink.length == 0)
                             {
-                                clickCommand = "./item.html?item=" + itemID
+                                clickCommand = "/item/?item=" + itemID
                                 buttonsContent += "<a type=\"button\" href =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
                             }
                             else
@@ -157,14 +160,14 @@ void function (script) {
                 document.getElementById("buttons").innerHTML = buttonsContent;
                 
                 document.getElementById("loading_placeholder").remove();
-            document.getElementById("main_content").removeAttribute("style");
-        }
-        catch (error){
-            AskForNotify("404", "Item could not be found.", "More Info", error)
-        }
-    });
-}catch (error){
-        AskForNotify("404", "Item could not be found.", "More Info", error)
+                document.getElementById("main_content").removeAttribute("style");
+            }
+            catch (error){
+                AskForNotify("500", "Internal Server Error", "More Info", error)
+            }
+        });
+    }catch (error){
+        AskForNotify("400", "Bad Request.", "More Info", error)
     }
     
     

@@ -2,7 +2,7 @@ var rawConfirmation = ""
 var windowDiv
 void function (script) {
     //const { searchParams } = new URL(script.src);
-    var fetchLocation = "./public/html/confirmation.html"
+    var fetchLocation = "/public/html/confirmation.html"
     windowDiv = document.createElement("div")
     windowDiv.setAttribute("id", "confirmation_window")
     script.parentElement.appendChild(windowDiv)

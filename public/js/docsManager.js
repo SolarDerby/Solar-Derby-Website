@@ -1,8 +1,21 @@
 var docsLocation = ""
+var script;
 
 async function webpageContent(src){
     const response = await fetch(docsLocation + src).then(r => r.text()).then(content => {return content;});
     return response
+}
+
+function toggleDocsDropdown(){
+    var docDrop = document.getElementById('docs-dropdown-menu')
+    if (docDrop.hasAttribute('style'))
+    { 
+        docDrop.removeAttribute('style')
+    }
+    else
+    { 
+        docDrop.setAttribute('style', 'display:none') 
+    }
 }
 
 function parseHTML(html) {
@@ -39,103 +52,214 @@ function RevalidateScripts(node)
     }
 }
 
+function LoadDocsDropdown(){
+    var fetchLocation = "/public/html/docs-dropdown.html"
 
-void function (script) {
+    try {
+        fetch(fetchLocation).then(r => r.text()).then(async content => {
+            while(document.getElementById("docs_subcategory_button") == null){
+                await new Promise(r => setTimeout(r, 100));
+            }
+            document.getElementById("docs_subcategory_button").parentElement.innerHTML = content
+        });
+    }catch (error){
+        AskForNotify("400", "Bad Request.", "More Info", "On Load Dropdown Function - " + error)
+    }
+}
 
-    
+function LoadDocs(fetchLocation){
+    var name = "404 Docs Dont Exist"
 
-    var fetchLocation = script.getAttribute("fetch")
-    var name = script.getAttribute("name")
+    var docTable = document.getElementById("docs-table-of-contents")
+    var docContents = document.getElementById("docs-content")
 
-    docsLocation = script.getAttribute("docs")
+    try {
+        fetch(fetchLocation).then(r => r.text()).then(async content => {
+            try {
+                var lines = content.split('\n');
 
-    console.log("Loading [" + name + "] Documentation : \"" + fetchLocation + "\"")
-    fetch(fetchLocation).then(r => r.text()).then(async content => {
-        var lines = content.split('\n');
-        var newContent = "";
-        var webContent = "<div class=\" flex-tile-clean p-10\"> <div class=\"w-full items-center flex justify-center flex-col\"> <p class=\"text-4xl text-white\">" + name + "</p></div></div>"
-        
-        var currentSection = "";
-        var submenu = false;
-        var lastmenu = false;
-        for(var i = 0;i < lines.length;i++){
-            var title = lines[i].split("\"")[1]
-            var src = lines[i].split("src=\"")[1].split("\"")[0]
+                name = lines[0]
+                docsLocation = lines[1]
+
+                console.log("Loading [" + name + "] Documentation : \"" + fetchLocation + "\"")
+
+                var newContent = "";
+                var webContent = "<div class=\" flex-tile-clean p-10\"> <div class=\"w-full items-center flex justify-center flex-col\"> <p class=\"text-4xl text-white\">" + name + "</p></div></div>"
+                
+                var currentSection = "";
+                var submenu = false;
+                var lastmenu = false;
+                for(var i = 2;i < lines.length;i++){
+                    var title = lines[i].split("\"")[1]
+                    var src = lines[i].split("src=\"")[1].split("\"")[0]
+                    
+                    if (src == "heading")
+                    {
+                        if (i != 0){
+                            newContent +="<br>"
+                        }
+                        currentSection = title + "-";
+
+                        newContent += "<p class=\"border-y-[2px] font-normal text-2xl\" style=\"margin-bottom:15px;\">" + title + "</p>"
             
-            if (src == "heading")
-            {
-                if (i != 0){
-                    newContent +="<br>"
+                        webContent += "<div id=\"" + title + "\" class=\"w-full\">"
+                        webContent += "<h3 class=\"flex items-center mt-12 mb-6\">"
+                        webContent += "<span aria-hidden=\"true\" class=\"w-4 bg-gray-200 rounded h-0.5\"></span>"
+                        webContent += "<span class=\"mx-3 text-4xl font-medium\">" + title + "</span>"
+                        webContent += "<span aria-hidden=\"true\" class=\"flex-grow bg-gray-200 rounded h-0.5\"></span>"
+                        webContent += "</h3>"
+                        webContent += "</div>"
+                    }
+                    else
+                    {
+                        if (lines[i][0] != "-"){
+                            if (submenu){
+                                submenu = false
+                                newContent += " </ul>"
+                            }
+                            if (lastmenu){
+                                lastmenu = false
+                                webContent += "</section>"
+                            }
+                            lastmenu = true;
+                            webContent += "<section id=\"" + currentSection + src + "\"><div class=\"h-full mt-5\">"
+                            webContent += "<p class=\"font-normal text-2xl\">" + title + "</p>"
+                            webContent += await webpageContent(src)
+                            webContent += "</div>"
+                            newContent = newContent + "<li class=\"font-medium\"><a href=\"#" + currentSection + src + "\">" + title + "</a></li>"
+                        }else{
+                            if (!submenu){
+                                submenu = true
+                                newContent += "<ul class=\"nav\">"
+                            }
+                            webContent += "<section id=\"" + currentSection + src + "\" class=\"border-l-[2px]\"><div class=\"h-full mt-3 ml-5\">"
+                            webContent += "<p class=\"font-normal text-xl\">" + title + "</p>"
+                            webContent += await webpageContent(src)
+                            webContent += "</div></section>"
+                            newContent += "<li class=\"text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]\"> <a href=\"#" + currentSection + src + "\">" + title + "</a></li>"
+                        }
+                        //code here using lines[i] which will give you each line
+                    }
                 }
-                currentSection = title + "-";
+                if (submenu){
+                    submenu = false
+                    newContent += " </ul>"
+                }
+                const parser = new DOMParser();
+                
+                
+                //webContent += "<button onclick=\"PrintDocs()\" class=\"rounded border border-green-600 bg-green-50 hover:bg-green-200 px-4 py-2 text-sm font-medium text-green-600\">Print</button>"
+                var newContentNodes = Array.prototype.slice.call(parser.parseFromString(newContent, 'text/html').getElementsByTagName("body")[0].childNodes, 0)
+                var webContentNodes = Array.prototype.slice.call(parseHTML(webContent).childNodes, 0)
 
-                newContent += "<p class=\"border-y-[2px] font-normal text-2xl\" style=\"margin-bottom:15px;\">" + title + "</p>"
-     
-                webContent += "<div id=\"" + title + "\" class=\"w-full\">"
-                webContent += "<h3 class=\"flex items-center mt-12 mb-6\">"
-                webContent += "<span aria-hidden=\"true\" class=\"w-4 bg-gray-200 rounded h-0.5\"></span>"
-                webContent += "<span class=\"mx-3 text-4xl font-medium\">" + title + "</span>"
-                webContent += "<span aria-hidden=\"true\" class=\"flex-grow bg-gray-200 rounded h-0.5\"></span>"
-                webContent += "</h3>"
-                webContent += "</div>"
+                for(var i = 0; i < newContentNodes.length; i++){
+                    var node = newContentNodes[i]
+                    RevalidateScripts(node)  
+                    docTable.appendChild(node)
+                }
+                
+                for(var i = 0; i < webContentNodes.length; i++){
+                    var node = webContentNodes[i]
+                    RevalidateScripts(node)  
+                    docContents.appendChild(node)
+                }
+
+                document.getElementById("docs-placeholder-content").setAttribute("style", "display:none")
+                document.getElementById("docs-placeholder-table-of-contents").setAttribute("style", "display:none")
+            } catch (error){
+                AskForNotify("500", "Internal Server Error", "More Info", "On Load Function - " + error)
             }
-            else
-            {
-                if (lines[i][0] != "-"){
-                    if (submenu){
-                        submenu = false
-                        newContent += " </ul>"
+        });
+    }catch (error){
+        AskForNotify("400", "Bad Request.", "More Info", "On Load Function - " + error)
+    }
+}
+
+function GetDocSource(docName){
+    try {
+        fetch(fetchLocation).then(r => r.text()).then(async content => {
+            while(document.getElementById("docs_subcategory_button") == null){
+                await new Promise(r => setTimeout(r, 100));
+            }
+            document.getElementById("docs_subcategory_button").parentElement.innerHTML = content
+        });
+    }catch (error){
+        AskForNotify("400", "Bad Request.", "More Info", "On Get Source Function - " + error)
+    }
+}
+
+function ReloadDocs(docName){
+    var fetchLocation = script.getAttribute("fetch")
+
+    document.getElementById("docs-table-of-contents").innerHTML = ""
+    document.getElementById("docs-content").innerHTML = ""
+    document.getElementById("docs-placeholder-content").removeAttribute("style")
+    document.getElementById("docs-placeholder-table-of-contents").removeAttribute("style")
+
+    try {
+        fetch(fetchLocation).then(r => r.text()).then(async content => {
+            try{
+                //Await the dropdown menu
+                while(document.getElementById("docs-dropdown-subheading") == null){
+                    await new Promise(r => setTimeout(r, 100));
+                }
+
+                var lines = content.split('\n');
+
+                var found_src = ""
+                var found_title = ""
+                for(var i = 0;i < lines.length;i++){
+                    var title = lines[i].split("\"")[1]
+                    var heading = lines[i].split("heading=\"")[1].split("\"")[0]
+                    var subheading = lines[i].split("subheading=\"")[1].split("\"")[0]
+                    var borderColor = lines[i].split("dropdown-border=\"")[1].split("\"")[0]
+                    var src = lines[i].split("src=\"")[1].split("\"")[0]
+                    
+                    if (found_src.length < 1){
+                        found_src = src
+                        found_title = title
+                        document.getElementById("docs-dropdown-heading").innerHTML = heading
+                        document.getElementById("docs-dropdown-subheading").innerHTML = subheading
+                        document.getElementById("docs-dropdown-border").setAttribute("class", document.getElementById("docs-dropdown-border").getAttribute("class") + " border-" + borderColor)
+                        document.title = heading + " " + subheading + " - Solar Derby"
                     }
-                    if (lastmenu){
-                        lastmenu = false
-                        webContent += "</section>"
+                    else if (title.toLowerCase() == docName.toLowerCase()){
+                        found_src = src
+                        found_title = title
+                        document.getElementById("docs-dropdown-heading").innerHTML = heading
+                        document.getElementById("docs-dropdown-subheading").innerHTML = subheading
+                        document.getElementById("docs-dropdown-border").setAttribute("class", document.getElementById("docs-dropdown-border").getAttribute("class") + " border-" + borderColor)
+                        document.title = heading + " " + subheading + " - Solar Derby"
                     }
-                    lastmenu = true;
-                    webContent += "<section id=\"" + currentSection + src + "\"><div class=\"h-full mt-5\">"
-                    webContent += "<p class=\"font-normal text-2xl\">" + title + "</p>"
-                    webContent += await webpageContent(src)
-                    webContent += "</div>"
-                    newContent = newContent + "<li class=\"font-medium\"><a href=\"#" + currentSection + src + "\">" + title + "</a></li>"
+                }
+                if (found_title.toLowerCase() == docName.toLowerCase() || docName.length < 1){
+                    LoadDocs(found_src)
                 }else{
-                    if (!submenu){
-                        submenu = true
-                        newContent += "<ul class=\"nav\">"
-                    }
-                    webContent += "<section id=\"" + currentSection + src + "\" class=\"border-l-[2px]\"><div class=\"h-full mt-3 ml-5\">"
-                    webContent += "<p class=\"font-normal text-xl\">" + title + "</p>"
-                    webContent += await webpageContent(src)
-                    webContent += "</div></section>"
-                    newContent += "<li class=\"text-[#111] dark:text-slate-300 pl-[20px] font-[400] border-l-[2px]\"> <a href=\"#" + currentSection + src + "\">" + title + "</a></li>"
+                    document.title = "Error"
+                    AskForNotify("404", "Item could not be found.", "More Info", "The requested doc's manifest could not be found in the docs library file, it might not exist.")
                 }
-                //code here using lines[i] which will give you each line
+            } catch (error){
+                AskForNotify("500", "Internal Server Error", "More Info", "On Reload Function - " + error)
             }
-        }
-        if (submenu){
-            submenu = false
-            newContent += " </ul>"
-        }
-        const parser = new DOMParser();
-        var docTable = document.getElementById("page-table-of-contents")
-        var docContents = document.getElementById("page-content")
+        });
+    }catch (error){
+        AskForNotify("400", "Bad Request.", "More Info", "On Reload Function - " + error)
+    }
+}
 
-        docTable.innerHTML = ""
-        docContents.innerHTML = ""
-        
-        //webContent += "<button onclick=\"PrintDocs()\" class=\"rounded border border-green-600 bg-green-50 hover:bg-green-200 px-4 py-2 text-sm font-medium text-green-600\">Print</button>"
-        var newContentNodes = Array.prototype.slice.call(parser.parseFromString(newContent, 'text/html').getElementsByTagName("body")[0].childNodes, 0)
-        var webContentNodes = Array.prototype.slice.call(parseHTML(webContent).childNodes, 0)
+void function (_script) {
+    script = _script
+    LoadDocsDropdown();
 
-        for(var i = 0; i < newContentNodes.length; i++){
-            var node = newContentNodes[i]
-            RevalidateScripts(node)  
-            docTable.appendChild(node)
+    try{
+        var urlParams = new URLSearchParams(window.location.search);
+        var docName = urlParams.get('doc')
+        if (docName == null){
+            docName = ""
         }
-        
-        for(var i = 0; i < webContentNodes.length; i++){
-            var node = webContentNodes[i]
-            RevalidateScripts(node)  
-            docContents.appendChild(node)
-        }
-        
-    });
+        ReloadDocs(docName)
+    }catch (error){
+        AskForNotify("500", "Internal Server Error", "More Info", "On Start Function - " + error)
+    }
+    
 }(document.currentScript);

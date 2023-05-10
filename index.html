@@ -20,11 +20,11 @@
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./public/css/basic.css">
+    <link rel="stylesheet" href="/public/css/basic.css">
 
     <!-- Default Script tags -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./public/js/index.js"></script>
+    <script src="/public/js/index.js"></script>
 
     <script>
       tailwind.config = {
@@ -33,7 +33,7 @@
     </script>
 
     <!-- Replace the title name -->
-    <title>Colorado Solar Derby</title>
+    <title>Home - Solar Derby</title>
   </head>
 
   <!-- Change the font-family to our choice -->
@@ -42,10 +42,10 @@
     class="dark:bg-slate-900 bg-white dark:text-white"
   >
     <!-- Header start here -->
-    <script src="./public/js/headerLoad.js" fetch="./public/html/header.html" rep="<!--%rep%-->" buttons=
-      "Home:./index.html;
-      Documentation:./docs.html;
-      Resources:./store.html;
+    <script src="/public/js/headerLoad.js" fetch="/public/html/header.html" rep="<!--%rep%-->" buttons=
+      "Home:/;
+      Documentation:/docs/;
+      Resources:/store;
       Starting:#start;
       Contribution:#contributors"
       >
@@ -117,11 +117,11 @@
         <ul class=" space-y-1">
           <li class="block rounded-lg sm:rounded-none sm:bg-gradient-to-r from-blue-950 to-gray-700 border-solid sm:border-y border-gray-200 bg-gray-100 py-2 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200">
             <div id="extra_images" class="overflow-x-auto h-3/4 flex flex-nowrap horizontal-scroll-fade">
-              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
-              <img id="image" src="./public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
+              <img id="image" src="/public/images/logo_1.png" alt="" class="h-full mr-2 w-fit object-cover rounded-lg" loading="lazy">
             </div>
           </li>
         </ul>
@@ -144,12 +144,15 @@
                     <div class="grid grid-cols-1 gap-4 self-end w-full">
                       <div class="flex-tile md:col-span-2 p-4 h-fit">
                         <p class="block uppercase text-sm leading-4 font-medium text-slate-300 mb-3">GUIDE TO GETTING STARTED</p>
-                        <a href="./docs.html" type="button" class=" rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-4 py-2 text-sm font-medium text-gray-600">Rules & Guide</a>
-                        <div class="h-1.5"></div>
+                        <div class="flex flex-row">
+                          <a href="/docs/?doc=24-25-guide" type="button" class=" rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-4 py-2 text-sm font-medium text-gray-600">Guide</a>
+                          <a href="/docs/?doc=24-25-rules" type="button" class="ml-2 rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-4 py-2 text-sm font-medium text-gray-600">Rules</a>
+                        </div>
+                        
                       </div>
                       <div class="flex-tile md:col-span-2 p-4 h-fit ">
                         <strong  class="block uppercase text-sm leading-4 font-medium text-slate-300 mb-3">PARTS FOR BUILDING CARS</strong>
-                        <a href="./store.html" type="button" class=" rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-4 py-2 text-sm font-medium text-gray-600">Resources</a>
+                        <a href="/store/" type="button" class=" rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-4 py-2 text-sm font-medium text-gray-600">Resources</a>
                         <div class="h-1.5"></div>
                       </div>
                     </div>
@@ -159,7 +162,7 @@
                 <div class=" h-fit row-span-3 md:col-span-3">
                   <strong  class="block uppercase text-md leading-4 font-medium text-slate-300 mb-2">START YOUR FIRST CAR</strong>
                   <div class="flex-tile">
-                    <script src="./public/js/store/tile.js" item="A310001"></script>
+                    <script src="/public/js/store/tile.js" item="A310001"></script>
                   </div>
                 </div>
               </div>
@@ -181,7 +184,7 @@
               <div role="listitem" class="relative flex justify-center items-center">
                 <a href="https://github.com/RexGameStudio" target="_blank">
                   <div class="relative h-40 bg-white hover:drop-shadow-2xl w-48 flex justify-center rounded-md">
-                    <img src="./public/svgs/github.svg" class="absolute top-16 h-6 w-6" alt="github.img"/>
+                    <img src="/public/svgs/github.svg" class="absolute top-16 h-6 w-6" alt="github.img"/>
                     <img src="https://avatars.githubusercontent.com/u/101283720?v=4" class="absolute w-20 h-20 -top-8 rounded-full" alt="display avatar" role="img"/>
                     <p class="absolute top-24 text-center text-black">Rex Kaeser</p>
                   </div>
@@ -200,7 +203,7 @@
     <!-- Contribution section ends here -->
 
     <!-- Footer starts here -->
-    <script src="./public/js/include.js" fetch="./public/html/footer.html"></script>
+    <script src="/public/js/include.js" fetch="/public/html/footer.html"></script>
     <!-- Footer ends here -->
   </body>
 </html>

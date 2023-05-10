@@ -14,7 +14,7 @@ void function (script) {
                 
                 //sm:mb-0 sm:mt-0 md:mb-0 md:mt-0 lg:mb-0 lg:mt-0
                 repContent += "<li class=\"mx-2 flex\">"
-                repContent += "<a href=\"" + vValue + "\">" + vName + "</a>"
+                repContent += "<a id=\"" + vValue.toLowerCase() + "_button\" href=\"" + vValue + "\">" + vName + "</a>"
                 repContent += "</li>"
                 
             }
