@@ -110,9 +110,6 @@ function LoadDocs(fetchLocation){
                     
                     if (src == "heading")
                     {
-                        if (i != 0){
-                            newContent +="<br>"
-                        }
                         currentSection = title + "-";
 
                         newContent += "<p class=\"border-y-[2px] font-normal text-2xl\" style=\"margin-bottom:15px;\">" + title + "</p>"

@@ -4,7 +4,7 @@ div.scroll-fade {
     overflow-y: auto;
     text-align: left;
     padding: 0;
-    mask-image: linear-gradient(transparent, black 2.5%, black 90%, transparent 100%);
+    mask-image: linear-gradient(transparent, black 10px, black 90%, transparent 100%);
 }
 div.horizontal-scroll-fade {
     overflow-x: auto;
