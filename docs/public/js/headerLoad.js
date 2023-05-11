@@ -24,6 +24,8 @@ void function (script) {
         var title = ""
         if (script.hasAttribute("title")){
             title = script.getAttribute("title")
+            content = content.replace("<!--%title_comment%", "")
+            content = content.replace("%title_comment%-->", "")
         }
         content = content.replace("%title%", title)
         script.outerHTML = content;
