@@ -6,6 +6,9 @@ div.scroll-fade {
     padding: 0;
     mask-image: linear-gradient(transparent, black 10px, black 90%, transparent 100%);
 }
+a:hover {
+    cursor: pointer;
+}
 div.horizontal-scroll-fade {
     overflow-x: auto;
     overflow-y: hidden;

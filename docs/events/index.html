@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Start Root Directory Repair-->
+    <base id="base" href="/Solar-Derby-Website/">
+    <script type="text/javascript">
+      void function (script) {
+        if (location.hostname.toLowerCase() == "solarderby.github.io"){
+          //document.write("<base href=\"/Solar-Derby-Website/\">")
+        }else{
+          document.getElementById("base").remove();
+          document.write("<base href=\"/docs/\">")
+        }
+      }(document.currentScript);
+    </script>
+    <!--End Root Directory Repair-->
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="./public/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Change the description wrt project -->
+    <meta
+      name="Resources"
+      content="A catalog of resources to help you build your solar powered car."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- You can add your own fonts from fonts.google.com -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"/>
+    <link rel="stylesheet" href="./public/css/basic.css">
+
+    <!-- Default Script tags -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./public/js/index.js"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+
+    <!-- Replace the title name -->
+    <title>Resources - Solar Derby</title>
+  </head>
+<body style="font-family: 'Poppins', sans-serif" class="dark:bg-slate-900 bg-white ">
+    <!--Shop Window Starts Here-->
+    
+    <!-- Shop Window ends here -->
+    <script src="./public/js/confirmation.js"></script>
+    <!-- Header start here -->
+    <script src="./public/js/headerLoad.js" fetch="./public/html/header.html" rep="<!--%rep%-->" title="Solar Derby" buttons=
+      "Home:./;
+      Documentation:./docs/;
+      Resources:./store/;
+      Events:./events/"
+      >
+    </script>
+
+    <div class=" m-10 flex-tile-clean p-10">
+      <div class="w-full items-center flex justify-center flex-col">
+        <p class="text-5xl text-white">Events</p>
+        <strong class="block uppercase text-lg leading-4 font-medium text-slate-300 mt-4">Solar derby events. When and where are the races, and who am i competing against.</strong>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="mt-10 mx-10 text-sm xl:mx-48">
+        <div>
+          <ul class="mt-4 space-y-1">
+            <li class="block rounded-lg bg-gray-100 py-2 text-sm font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-200">
+              <div class="w-full flex flex-col px-8 pt-4 justify-center items-center">
+                <h1 class="text-lg font-semibold text-white sm:text-slate-900 md:text-2xl dark:sm:text-white">2024-25 Season Race</h1>
+                <strong class="block uppercase text-sm leading-4 font-medium text-slate-300 mt-2">The competition for the 24-25 school year.</strong>
+              </div>
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-0 m-6">
+                <div class="p-4 row-span-2">
+                  <strong  class="block uppercase text-md leading-4 font-medium text-slate-300 mb-2">EVENT</strong>
+                  <div class="flex-tile">
+                    The event will consist of 2 drag races for top speed, one on solar only and the other on battery, and 
+                    2 endurance races, a short 15 minute solar only race and a 1 hour long race where you will have batteries
+                    and your solar cells.
+                  </div>
+                </div>
+                <div class="p-4">
+                  <div>
+                    <strong  class="block uppercase text-md leading-4 font-medium text-slate-300 mb-2">LOCATION AND TIME</strong>
+                    <ul class="mt-2 space-y-1">
+                      <li id="figures">
+                        <p class="block rounded-lg px-4 py-2 text-sm font-medium mt-2 bg-gray-700 text-gray-200">Location : Undecided</p>
+                        <p class="block rounded-lg px-4 py-2 text-sm font-medium mt-2 bg-gray-700 text-gray-200">Date : Around end of April, start of May</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="p-4 row-span-2">
+                  <div>
+                    <strong  class="block uppercase text-md leading-4 font-medium text-slate-300 mb-2">COMPETITIONS</strong>
+                    <ul class="mt-2 space-y-1">
+                      <li id="figures">
+                        <p class="block rounded-lg px-4 py-2 text-sm font-medium mt-2 bg-gray-700 text-gray-200">Drag Race : Solar Only</p>
+                        <p class="block rounded-lg px-4 py-2 text-sm font-medium mt-2 bg-gray-700 text-gray-200">Drag Race : Battery and Solar</p>
+                        <p class="block rounded-lg px-4 py-2 text-sm font-medium mt-2 bg-gray-700 text-gray-200">Endurance Race : 15 minute solar only</p>
+                        <p class="block rounded-lg px-4 py-2 text-sm font-medium mt-2 bg-gray-700 text-gray-200">Endurance Race : 1 hour battery and solar</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="p-4">
+                  <strong  class="block uppercase text-md leading-4 font-medium text-slate-300 mb-2">KNOWN TEAMS</strong>
+                    <ul class="mt-2 space-y-1">
+                      <li id="figures">
+                        <p class="block rounded-lg px-4 py-2 text-sm font-medium mt-2 bg-gray-700 text-gray-200">Summit High School</p>
+                      </li>
+                    </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    
+    <!-- Footer starts here -->
+    <script src="./public/js/include.js" fetch="./public/html/footer.html"></script>
+    <!-- Footer ends here -->
+  </body>
+</html>

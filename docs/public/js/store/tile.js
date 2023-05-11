@@ -53,7 +53,7 @@ void function (script) {
                         var moreBody = splitContent[1]
 
                         var clickCommand = "AskForConfirmationLink('Download', '" + title + " as " + fileType + "', 'More Info', '" + ReplaceTooltips(moreBody) + "', 'Download', 'Cancel', '" + downloadLink + "')"
-                        buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 px-3 py-1.5 text-sm font-medium text-gray-600\">Download " + fileType + "</button>\n"
+                        buttonsContent += "<a type=\"button\" onclick =\"" + clickCommand + "\" class=\"select-none rounded border border-gray-600 bg-gray-50 px-3 py-1.5 text-sm hover:bg-gray-300 font-medium text-gray-600\">Download " + fileType + "</a>\n"
                     }
                     else if (key == "links"){
                         var splitContent = content.split(";")
@@ -63,17 +63,17 @@ void function (script) {
                         if (downloadLink.startsWith("/")){
                             downloadLink = "./public/store/" + itemID + downloadLink
                             clickCommand = "window.open(" + downloadLink + ", '_blank')"
-                            buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</button>\n"
+                            buttonsContent += "<a type=\"button\" onclick =\"" + clickCommand + "\" class=\"select-none rounded border border-gray-600 bg-gray-50 hover:bg-gray-300 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
                         }
                         else if (downloadLink.length == 0)
                         {
                             clickCommand = "./item/?item=" + itemID
-                            buttonsContent += "<a type=\"button\" href =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
+                            buttonsContent += "<a type=\"button\" href =\"" + clickCommand + "\" class=\"select-none rounded border border-gray-600 bg-gray-50 hover:bg-gray-300 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
                         }
                         else
                         {
                             clickCommand = "AskForConfirmationLink('" + linkTitle + "', 'Open link to a third party website.', 'More Info', 'These links are being provided as a convenience and for informational purposes only; they do not constitute an endorsement or an approval by Solar Derby of any of the products, services or opinions of the corporation or organization or individual. Solar Derby bears no responsibility for the accuracy, legality or content of the external site or for that of subsequent links. Contact the external site for answers to questions regarding its content.', 'Open', 'Cancel', '" + downloadLink + "')"
-                            buttonsContent += "<button type=\"button\" onclick =\"" + clickCommand + "\" class=\"rounded border border-gray-600 bg-gray-50 hover:bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</button>\n"
+                            buttonsContent += "<a type=\"button\" onclick =\"" + clickCommand + "\" class=\"select-none rounded border border-gray-600 bg-gray-50 hover:bg-gray-300 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
                         }
                     }
                 }
