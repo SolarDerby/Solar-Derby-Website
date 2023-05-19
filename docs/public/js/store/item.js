@@ -117,8 +117,8 @@ void function (script) {
                             }
                             else if (downloadLink.length == 0)
                             {
-                                clickCommand = "./item/?item=" + itemID
-                                buttonsContent += "<a type=\"button\" href =\"" + clickCommand + "\" class=\"select-none rounded border border-gray-600 bg-gray-50 hover:bg-gray-300 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
+                                //clickCommand = "./item/?item=" + itemID
+                                //buttonsContent += "<a type=\"button\" href =\"" + clickCommand + "\" class=\"select-none rounded border border-gray-600 bg-gray-50 hover:bg-gray-300 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
                             }
                             else
                             {
