@@ -19,7 +19,7 @@ div.horizontal-scroll-fade {
     mask-image: linear-gradient(to right, transparent, black 2.5%, black 97.5%, transparent 100%);
 }
 body { 
-    font-family: "Inter", comic-sans; 
+    font-family: "Inter", sans-serif; 
     background-image: url('/abstract-seamless-hexagon-pattern-vector-illustration-geometric-seamless-pattern-R983WX (1).jpg
 ');
     background-repeat: repeat; 
