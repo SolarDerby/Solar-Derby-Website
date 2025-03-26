@@ -19,7 +19,10 @@ div.horizontal-scroll-fade {
     mask-image: linear-gradient(to right, transparent, black 2.5%, black 97.5%, transparent 100%);
 }
 body { 
-    font-family: "Inter", sans-serif; 
+    font-family: "Inter", comic-sans; 
+    background-image: url('public/images/background.jpg');
+    background-size: 30vw; 
+    background-repeat: repeat; 
 }
 .gradient-animate { 
     background-size: 400%;
