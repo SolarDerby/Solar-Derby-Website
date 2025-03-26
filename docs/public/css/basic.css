@@ -20,7 +20,7 @@ div.horizontal-scroll-fade {
 }
 body { 
     font-family: "Inter", comic-sans; 
-    background-image: url('public/images/background.jpg');
+    background-image: url('.../images/background.jpg');
     background-size: 30vw; 
     background-repeat: repeat; 
 }
