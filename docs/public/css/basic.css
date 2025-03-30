@@ -20,7 +20,7 @@ div.horizontal-scroll-fade {
 }
 body { 
     font-family: "Inter", sans-serif; 
-    background-image: url('./public/images/background.jpg');
+    background-image: url('/public/images/background.jpg');
     background-repeat: repeat; 
 }
 .gradient-animate { 
