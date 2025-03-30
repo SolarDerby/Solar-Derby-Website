@@ -63,7 +63,7 @@ void function (script) {
                         if (downloadLink.startsWith("/")){
                             downloadLink = "./public/store/" + itemID + downloadLink
                             clickCommand = "window.open(" + downloadLink + ", '_blank')"
-                            buttonsContent += "<a type=\"button\" onclick =\"" + clickCommand + "\" class=\"select-none rounded border border-gray-600 bg-gray-50 hover:bg-gray-300 px-3 py-1.5 text-sm font-medium text-gray-600\">" + linkTitle + "</a>\n"
+                            buttonsContent += "<a type=\"button\" onclick =\"" + clickCommand + "\" class=\"select-none rounded border border-gray-600 bg-gray-50 hover:bg-gray-300 px-3 py-1.5 text-sm font-medium text-black\">" + linkTitle + "</a>\n"
                         }
                         else if (downloadLink.length == 0)
                         {
